@@ -1,0 +1,16 @@
+# ------------ Start an avro console consumer ---------------------------
+> docker-compose exec schema_registry bash
+
+> kafka-avro-console-consumer --topic <topic-name> --bootstrap-server kafka:9092 
+
+# ------------ Delete a schema from schema-registry ---------------------
+> docker-compose exec schema_registry bash
+
+# Deletes all schema versions registered under the subject "<topic-name>-value"
+> curl -X DELETE http://localhost:8081/subjects/<topic-name>-value
+
+# Deletes version 1 of the schema registered under subject "<topic-name>-value"
+> curl -X DELETE http://localhost:8081/subjects/<topic-name>-value/versions/1
+
+# Deletes the most recently registered schema under subject "<topic-name>-value"
+> curl -X DELETE http://localhost:8081/subjects/<topic-name>-value/versions/latest
