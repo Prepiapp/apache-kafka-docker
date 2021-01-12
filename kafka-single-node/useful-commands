@@ -3,6 +3,11 @@
 
 > kafka-avro-console-consumer --topic <topic-name> --bootstrap-server kafka:9092 
 
+# ------------ Produce an avro message on a topic -----------------------
+> docker-compose exec schema_registry bash
+
+> echo '<avro-message>' | kafka-avro-console-producer --topic <topic-name> --bootstrap-server kafka:9092 --property value.schema='<avro-schema>'
+
 # ------------ Delete a schema from schema-registry ---------------------
 > docker-compose exec schema_registry bash
 
